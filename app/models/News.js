@@ -18,7 +18,7 @@ var NewsSchema = new Schema({
   // This only saves one note's ObjectId, ref refers to the Note model
   Comments: {
     type: Schema.Types.ObjectId,
-    ref: "Commnets"
+    ref: "Comments"
   }
 });
 

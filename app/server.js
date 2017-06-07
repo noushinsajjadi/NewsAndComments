@@ -54,11 +54,11 @@ app.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h2 within an article tag, and do the following:
-     $("content-area article").each(function(i, element) {
+     $("article h2").each(function(i, element) {
 
       // Save an empty result object
        var result = {};
-
+       console.log($(this).children("a").text());
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("a").text();
       result.link = $(this).children("a").attr("href");
