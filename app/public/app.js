@@ -4,6 +4,9 @@ $.getJSON("/News", function(data) {
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     $("#News").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    console.log(data[i]._id);
+    $("#News").append("<button data-id='" + data[i]._id + "' id='ShowComments'>Show Comments</button>");
+
   }
 });
 
@@ -69,4 +72,13 @@ $(document).on("click", "#saveComments", function() {
   // Also, remove the values entered in the input and textarea for Comment entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
+});
+
+// When you click the showComment button
+$(document).on("click", "#ShowComments", function() {
+  // Grab the id associated with the news from the submit button
+  var thisId = $(this).attr("data-id");
+  console.log("the id is :" + thisId);
+  top.location.href = "./News/" + thisId;
+      
 });
